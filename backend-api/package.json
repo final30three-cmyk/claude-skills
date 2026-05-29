@@ -1,0 +1,33 @@
+{
+  "name": "backend-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend API monorepo — Express + TypeScript + Zod + JWT",
+  "scripts": {
+    "dev": "pnpm --filter @backend-api/api dev",
+    "build": "pnpm --filter @backend-api/shared build && pnpm --filter @backend-api/api build",
+    "start": "pnpm --filter @backend-api/api start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p apps/api/tsconfig.json",
+    "test": "jest --passWithNoTests",
+    "test:unit": "jest --testPathPattern=tests/unit",
+    "test:integration": "jest --testPathPattern=tests/integration"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@9.15.9",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "@types/supertest": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
+    "eslint": "^10.4.0",
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.4.11",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.60.0"
+  }
+}

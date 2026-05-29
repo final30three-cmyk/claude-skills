@@ -1,0 +1,56 @@
+name: backend-dev
+version: 2.0.0
+description: Backend API development agent
+
+runtime:
+  model: gpt-4o
+  temperature: 0.1
+
+permissions:
+  filesystem:
+    allow:
+      - src/**
+      - packages/**
+      - apps/**
+      - config/**
+    deny:
+      - node_modules/**
+      - .git/**
+      - dist/**
+      - build/**
+      - "**/.env*"
+  commands:
+    - pnpm
+    - npm
+    - git
+    - node
+    - npx
+  network: false
+
+memory:
+  enabled: true
+  retrieval:
+    top_k: 5
+    similarity_threshold: 0.82
+
+tools:
+  - ReadFile
+  - WriteFile
+  - EditFile
+  - MultiEdit
+  - DeleteFile
+  - ListDirectory
+  - GlobSearch
+  - GrepSearch
+  - Bash
+
+policies:
+  requireApprovalFor:
+    - migrations
+    - auth-changes
+    - dependency-upgrades
+    - secret-handling
+    - infrastructure-changes
+  maxExecutionTimeMs: 300000
+  maxFileOperations: 50
+  maxChangedLines: 500
